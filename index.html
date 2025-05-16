@@ -16,7 +16,7 @@
       console.log(`Code matched = ${decodedText}`, decodedResult);
 
       // Panggil Google Apps Script API
-      fetch(`https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbzAT9RTCiS9EdyoM-7Ty9UQd1H7MsgH2y7Gz093eWlavFAJHAdM31WfE_LqCvqEsHA/exec/exec?barcode=${decodedText}`)
+      fetch(`https://script.google.com/macros/s/AKfycbzAT9RTCiS9EdyoM-7Ty9UQd1H7MsgH2y7Gz093eWlavFAJHAdM31WfE_LqCvqEsHA/exec?barcode=${decodedText}`)
         .then(response => response.json())
         .then(data => {
           if (data.error) {
