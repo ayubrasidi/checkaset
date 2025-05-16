@@ -1,0 +1,48 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scan Barcode</title>
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+</head>
+<body>
+  <h2>Scan Barcode</h2>
+  <div id="reader" style="width: 300px;"></div>
+  <div id="result"></div>
+
+  <script>
+    function onScanSuccess(decodedText, decodedResult) {
+      console.log(`Code matched = ${decodedText}`, decodedResult);
+
+      // Panggil Google Apps Script API
+      fetch(`https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbzAT9RTCiS9EdyoM-7Ty9UQd1H7MsgH2y7Gz093eWlavFAJHAdM31WfE_LqCvqEsHA/exec/exec?barcode=${decodedText}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.error) {
+            document.getElementById("result").innerHTML = `<p style="color:red;">${data.error}</p>`;
+          } else {
+            document.getElementById("result").innerHTML = `
+              <p><strong>Barcode:</strong> ${data.barcode}</p>
+              <p><strong>Item:</strong> ${data.item}</p>
+              <p><strong>Location:</strong> ${data.location}</p>
+              <p><strong>Status:</strong> ${data.status}</p>
+            `;
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          document.getElementById("result").innerHTML = `<p style="color:red;">Error fetching data.</p>`;
+        });
+    }
+
+    function onScanError(errorMessage) {
+      console.warn(`Scan error: ${errorMessage}`);
+    }
+
+    let html5QrcodeScanner = new Html5QrcodeScanner(
+      "reader", { fps: 10, qrbox: 250 });
+    html5QrcodeScanner.render(onScanSuccess, onScanError);
+  </script>
+</body>
+</html>
