@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,15 +14,17 @@
       console.log(`Code matched = ${decodedText}`, decodedResult);
       console.log("Scanned barcode: ", decodedText);
 
+      // Paparkan barcode terus di skrin
+      document.getElementById("result").innerHTML = `<p><strong>Scanned Barcode:</strong> ${decodedText}</p>`;
+
       // Panggil Google Apps Script API
       fetch(`https://script.google.com/macros/s/AKfycbz5t1RWLAe4MfE6rmjngyPCWJAmHtgXusTUyowXIFmDXctAS8MwFMmQGAyQIeCPgtY/exec?barcode=${decodedText}`)
         .then(response => response.json())
         .then(data => {
           if (data.error) {
-            document.getElementById("result").innerHTML = `<p style="color:red;">${data.error}</p>`;
+            document.getElementById("result").innerHTML += `<p style="color:red;">${data.error}</p>`;
           } else {
-            document.getElementById("result").innerHTML = `
-              <p><strong>Barcode:</strong> ${data.barcode}</p>
+            document.getElementById("result").innerHTML += `
               <p><strong>Item:</strong> ${data.item}</p>
               <p><strong>Location:</strong> ${data.location}</p>
               <p><strong>Status:</strong> ${data.status}</p>
@@ -33,7 +33,7 @@
         })
         .catch(err => {
           console.error(err);
-          document.getElementById("result").innerHTML = `<p style="color:red;">Error fetching data.</p>`;
+          document.getElementById("result").innerHTML += `<p style="color:red;">Error fetching data.</p>`;
         });
     }
 
