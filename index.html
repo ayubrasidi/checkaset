@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Scan Barcode</title>
+  <title>Scan Barcode Besar</title>
   <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
   <style>
-    body { font-family: sans-serif; margin: 0; padding: 0; text-align: center; }
-    #reader { width: 100%; max-width: 600px; margin: auto; }
-    #result { margin-top: 20px; font-size: 1.2rem; }
+    body { font-family: sans-serif; margin: 0; padding: 0; text-align: center; background: #f5f5f5; }
+    #reader { width: 100vw; height: 80vh; }
+    #result { padding: 10px; font-size: 1.5rem; background: #fff; }
   </style>
 </head>
 <body>
   <h2>Scan Barcode</h2>
   <div id="reader"></div>
-  <div id="result"></div>
+  <div id="result">Sila scan barcode</div>
 
   <script>
     function onScanSuccess(decodedText, decodedResult) {
