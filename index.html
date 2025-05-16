@@ -14,6 +14,7 @@
   <script>
     function onScanSuccess(decodedText, decodedResult) {
       console.log(`Code matched = ${decodedText}`, decodedResult);
+      console.log("Scanned barcode: ", decodedText);
 
       // Panggil Google Apps Script API
       fetch(`https://script.google.com/macros/s/AKfycbyy-qwF9S-OI1YmTBqK0H2APO8T7TscGsNM7z7QLaZCsghXeYShkt7gdaRxCJ3_1mA/exec?barcode=${decodedText}`)
