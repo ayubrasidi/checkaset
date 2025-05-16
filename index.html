@@ -22,9 +22,9 @@
         .then(response => response.json())
         .then(data => {
           if (data.error) {
-            document.getElementById("result").innerHTML += `<p style="color:red;">${data.error}</p>`;
+            document.getElementById("info").innerHTML += `<p style="color:red;">${data.error}</p>`;
           } else {
-            document.getElementById("result").innerHTML += `
+            document.getElementById("info").innerHTML += `
               <p><strong>Item:</strong> ${data.info}</p>
               <p><strong>Location:</strong> ${data.location}</p>
               <p><strong>Status:</strong> ${data.status}</p>
