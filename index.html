@@ -5,7 +5,7 @@
   <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
   <style>
     body { font-family: sans-serif; margin: 0; padding: 0; text-align: center; background: #f5f5f5; }
-    #reader { width: 100vw; height: 80vh; }
+    #reader { width: 200vw; height: 80vh; }
     #result { padding: 10px; font-size: 1.5rem; background: #fff; }
   </style>
 </head>
@@ -47,7 +47,7 @@
     }
 
     let html5QrcodeScanner = new Html5QrcodeScanner(
-      "reader", { fps: 10, qrbox: { width: 400, height: 400 } });
+      "reader", { fps: 10, qrbox: 300 });
     html5QrcodeScanner.render(onScanSuccess, onScanError);
   </script>
 </body>
