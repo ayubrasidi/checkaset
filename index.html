@@ -18,7 +18,7 @@
       document.getElementById("result").innerHTML = `<p><strong>Scanned Barcode:</strong> ${decodedText}</p>`;
 
       // Panggil Google Apps Script API
-      fetch(`https://script.google.com/macros/s/AKfycbz5t1RWLAe4MfE6rmjngyPCWJAmHtgXusTUyowXIFmDXctAS8MwFMmQGAyQIeCPgtY/exec?barcode=${decodedText}`)
+      fetch(`https://script.google.com/macros/s/AKfycbz5t1RWLAe4MfE6rmjngyPCWJAmHtgXusTUyowXIFmDXctAS8MwFMmQGAyQIeCPgtY/exec?Barcode=${decodedText}`)
         .then(response => response.json())
         .then(data => {
           if (data.error) {
